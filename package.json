@@ -1,0 +1,27 @@
+{
+  "name": "crawler-macrolink",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "crawler": "^1.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc ./app/index.ts",
+    "start": "node ./app/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xjchenhao/crawler-macrolink.git"
+  },
+  "author": "xjchenhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xjchenhao/crawler-macrolink/issues"
+  },
+  "homepage": "https://github.com/xjchenhao/crawler-macrolink#readme"
+}
