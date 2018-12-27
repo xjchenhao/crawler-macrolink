@@ -15,5 +15,6 @@
 ## 封装async-node-crawler模块
 继承[node-crawler](https://github.com/bda-research/node-crawler)模块，使之支持async/await语法。
 
-github地址：[https://github.com/xjchenhao/async-node-crawler](https://github.com/xjchenhao/async-node-crawler)
-npm地址：[https://www.npmjs.com/package/async-crawler?activeTab=dependencies](https://www.npmjs.com/package/async-crawler?activeTab=dependencies)
+> github地址：[https://github.com/xjchenhao/async-node-crawler](https://github.com/xjchenhao/async-node-crawler)
+
+> npm地址：[https://www.npmjs.com/package/async-crawler?activeTab=dependencies](https://www.npmjs.com/package/async-crawler?activeTab=dependencies)
