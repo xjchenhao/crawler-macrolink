@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "crawler": "^1.2.0"
+    "async-crawler": "^1.0.0",
+    "co": "^4.6.0"
   },
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "typescript": "^3.2.2"
   },
   "scripts": {

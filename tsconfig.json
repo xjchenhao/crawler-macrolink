@@ -4,6 +4,7 @@
         "target": "es5",
         "noImplicitAny": true,
         "outDir": "./dist",
+        "types" : ["node"],
         "sourceMap": true
     },
     "include": [
