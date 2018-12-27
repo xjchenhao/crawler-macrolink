@@ -5,9 +5,9 @@ const co = require('co');
 
 const crawler = new Crawler();
 
-co(function* () {
+co(async function () {
 
-    const result = yield crawler.asyncDirect({
+    const result = await crawler.asyncDirect({
         uri: 'http://www.nhl-pharm.com/news.html',
         callback: function (error: any, res: any) {
             if (error) {

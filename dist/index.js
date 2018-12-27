@@ -1,4 +1,12 @@
 'use strict';
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __generator = (this && this.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
@@ -30,35 +38,37 @@ var Crawler = require("async-crawler");
 var co = require('co');
 var crawler = new Crawler();
 co(function () {
-    var result;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, crawler.asyncDirect({
-                    uri: 'http://www.nhl-pharm.com/news.html',
-                    callback: function (error, res) {
-                        if (error) {
-                            console.log(error);
-                        }
-                        else {
-                            var $ = res.$;
-                            var $newscenterA = $('#newscenter a');
-                            var rusult = [];
-                            for (var i = 0, l = $newscenterA.length; i < l; i++) {
-                                var item = $newscenterA[i];
-                                rusult.push({
-                                    title: $(item).text(),
-                                    href: $(item).attr('href'),
-                                });
+    return __awaiter(this, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, crawler.asyncDirect({
+                        uri: 'http://www.nhl-pharm.com/news.html',
+                        callback: function (error, res) {
+                            if (error) {
+                                console.log(error);
                             }
-                            return rusult;
+                            else {
+                                var $ = res.$;
+                                var $newscenterA = $('#newscenter a');
+                                var rusult = [];
+                                for (var i = 0, l = $newscenterA.length; i < l; i++) {
+                                    var item = $newscenterA[i];
+                                    rusult.push({
+                                        title: $(item).text(),
+                                        href: $(item).attr('href'),
+                                    });
+                                }
+                                return rusult;
+                            }
                         }
-                    }
-                })];
-            case 1:
-                result = _a.sent();
-                console.log(result);
-                return [2 /*return*/];
-        }
+                    })];
+                case 1:
+                    result = _a.sent();
+                    console.log(result);
+                    return [2 /*return*/];
+            }
+        });
     });
 });
 //# sourceMappingURL=index.js.map
