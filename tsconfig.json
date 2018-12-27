@@ -3,7 +3,7 @@
         "module": "commonjs",
         "target": "es5",
         "noImplicitAny": true,
-        "outDir": "./dist",
+        "outDir": "./lib",
         "types" : ["node"],
         "lib": [ "es2015" ],
         "sourceMap": true
@@ -11,5 +11,5 @@
     "include": [
         "src/**/*"
     ],
-    "exclude":["./dist"]
+    "exclude":["./lib"]
 }

@@ -14,6 +14,7 @@ co(async function () {
                 console.log(error);
             } else {
                 var $ = res.$;
+                
                 const $newscenterA = $('#newscenter a');
                 const rusult: Array<object> = [];
 
