@@ -3,7 +3,7 @@
 
 
 ## vscode调试TypeScript
-> 实现ts修改后自动build出js，按F5进入debug模式输出结果。
+实现ts修改后自动build出js，按F5进入debug模式输出结果。
 
 要点：
 1. `tsconfig.json`配置打开`sourceMap:true`
@@ -16,5 +16,3 @@
 继承[node-crawler](https://github.com/bda-research/node-crawler)模块，使之支持async/await语法。
 
 > github地址：[https://github.com/xjchenhao/async-node-crawler](https://github.com/xjchenhao/async-node-crawler)
-> 
-> npm地址：[https://www.npmjs.com/package/async-crawler?activeTab=dependencies](https://www.npmjs.com/package/async-crawler?activeTab=dependencies)
