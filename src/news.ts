@@ -28,6 +28,7 @@ const getNewsListDataPromise = async () => {
                         rusult.push({
                             title: $(item).text(),
                             href: $(item).attr('href'),
+                            time:$(item).parent().next().text()
                         })
                     }
 
