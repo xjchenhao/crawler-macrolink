@@ -6,13 +6,13 @@ const getCompleteNews = require('./newsDetails');
 const crawler = new Crawler();
 
 // 获取新闻列表数据
-const getNewsListDataPromise = async () => {
+const getNewsListDataPromise = async (url: string) => {
     let newsPagecount = 0; // 页数
 
     // 获取新闻列表数据
     const getNewsListData = async (pageNumber: number) => {
         return await crawler.asyncDirect({
-            uri: `http://www.nhl-pharm.com/news.html?&p=${pageNumber}`,
+            uri: `${url}?&p=${pageNumber}`,
             callback: function (error: any, res: any) {
                 if (error) {
                     console.log(error);
@@ -29,7 +29,7 @@ const getNewsListDataPromise = async () => {
                         rusult.push({
                             title: $(item).text(),
                             href: $(item).attr('href'),
-                            time:$(item).parent().next().text()
+                            time: $(item).parent().next().text()
                         })
                     }
 
@@ -53,10 +53,10 @@ const getNewsListDataPromise = async () => {
     return Array.prototype.concat.call(pageData, ...result);
 }
 
-module.exports = async () => {
-    const newsListData = await getNewsListDataPromise();
+module.exports = async (url: string) => {
+    const newsListData = await getNewsListDataPromise(url);
 
-    const result =await Promise.all(newsListData.map(async (item: object) => {
+    const result = await Promise.all(newsListData.map(async (item: object) => {
         return await getCompleteNews(item);
     }))
 
