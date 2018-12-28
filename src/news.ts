@@ -4,6 +4,7 @@ const Crawler = require("async-crawler");
 
 const crawler = new Crawler();
 
+// 获取新闻列表数据
 const getNewsListDataPromise = async () => {
     let newsPagecount = 0; // 页数
 
@@ -50,9 +51,42 @@ const getNewsListDataPromise = async () => {
     return Array.prototype.concat.call(pageData, ...result);
 }
 
+// 进入新闻内容页，得到完整的新闻数据
+const getCompleteNews = async (item: { href: string }) => {
+    let result: any = {};
+
+    result = await crawler.asyncDirect({
+        uri: `http://www.nhl-pharm.com${item.href}`,
+        callback: function (error: any, res: any) {
+            if (error) {
+                console.log(error);
+            } else {
+                const $ = res.$;
+
+                let content: string = $('#detail').html();
+
+                content = content.replace(/src="\//, `src="http://www.nhl-pharm.com/`)
+
+                return {
+                    content,
+                };
+            }
+        }
+    });
+
+    return {
+        ...item,
+        content: result.content,
+    }
+}
+
 module.exports = async () => {
     const newsListData = await getNewsListDataPromise();
 
-    return newsListData;
+    const result = Promise.all(newsListData.map(async (item: object) => {
+        return await getCompleteNews(item);
+    }))
+
+    return result;
 
 };
