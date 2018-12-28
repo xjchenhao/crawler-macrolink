@@ -1,37 +1,10 @@
 'use strict';
 
-const Crawler = require("async-crawler");
 const co = require('co');
-
-const crawler = new Crawler();
+const news = require("./news");
 
 co(async function () {
-
-    const result = await crawler.asyncDirect({
-        uri: 'http://www.nhl-pharm.com/news.html',
-        callback: function (error: any, res: any) {
-            if (error) {
-                console.log(error);
-            } else {
-                var $ = res.$;
-                
-                const $newscenterA = $('#newscenter a');
-                const rusult: Array<object> = [];
-
-                for (let i = 0, l = $newscenterA.length; i < l; i++) {
-                    const item = $newscenterA[i];
-                    rusult.push({
-                        title: $(item).text(),
-                        href: $(item).attr('href'),
-                    })
-                }
-
-                return rusult;
-            }
-        }
-    });
-
-    console.log(result);
-
-
+    let newsData=await news();
+    
+    console.log(newsData);
 });
