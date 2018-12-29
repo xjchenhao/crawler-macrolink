@@ -4,6 +4,7 @@ const co = require('co');
 const news = require("./news");
 const newsDetails = require("./newsDetails");
 const product = require("./product");
+const environment = require("./environment");
 
 co(async function () {
     let newsPromise = news('http://www.nhl-pharm.com/news.html');    // 新闻
@@ -15,8 +16,10 @@ co(async function () {
 
     let productPromise = product('http://www.nhl-pharm.com/product.html');  // 产品
 
+    let environmentPromise = environment('http://www.nhl-pharm.com/qyhj.html');  // 环境
 
-    const result = await Promise.all([newsPromise, noticePromise, aboutPromise, contactPromise, caigouPromise, productPromise]);
+
+    const result = await Promise.all([newsPromise, noticePromise, aboutPromise, contactPromise, caigouPromise, productPromise, environmentPromise]);
 
     console.log(result);
 });
