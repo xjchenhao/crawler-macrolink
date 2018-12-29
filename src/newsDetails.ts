@@ -3,11 +3,11 @@
 const Crawler = require("async-crawler");
 const crawler = new Crawler();
 
-module.exports = async (item: { href: string }) => {
+module.exports = async (href: string) => {
     let result: any = {};
 
     result = await crawler.asyncDirect({
-        uri: `http://www.nhl-pharm.com${item.href}`,
+        uri: href,
         callback: function (error: any, res: any) {
             if (error) {
                 console.log(error);
@@ -25,8 +25,5 @@ module.exports = async (item: { href: string }) => {
         }
     });
 
-    return {
-        ...item,
-        content: result.content,
-    }
+    return result.content
 }

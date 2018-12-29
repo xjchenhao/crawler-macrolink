@@ -56,8 +56,11 @@ const getNewsListDataPromise = async (url: string) => {
 module.exports = async (url: string) => {
     const newsListData = await getNewsListDataPromise(url);
 
-    const result = await Promise.all(newsListData.map(async (item: object) => {
-        return await getCompleteNews(item);
+    const result = await Promise.all(newsListData.map(async (item: { href: string }) => {
+        return {
+            ...item,
+            content: await getCompleteNews(`http://www.nhl-pharm.com${item.href}`)
+        };
     }))
 
     return result;
