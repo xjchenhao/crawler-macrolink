@@ -3,6 +3,7 @@
 const co = require('co');
 const news = require("./news");
 const newsDetails = require("./newsDetails");
+const product = require("./product");
 
 co(async function () {
     let newsPromise = news('http://www.nhl-pharm.com/news.html');    // 新闻
@@ -12,8 +13,10 @@ co(async function () {
     let contactPromise = newsDetails('http://www.nhl-pharm.com/contact.html');  // 联系我们
     let caigouPromise = newsDetails('http://www.nhl-pharm.com/caigou.html');  // 购物供应
 
+    let productPromise = product('http://www.nhl-pharm.com/product.html');  // 产品
 
-    const result = await Promise.all([newsPromise, noticePromise, aboutPromise, contactPromise, caigouPromise]);
+
+    const result = await Promise.all([newsPromise, noticePromise, aboutPromise, contactPromise, caigouPromise, productPromise]);
 
     console.log(result);
 });
